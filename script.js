@@ -13,16 +13,18 @@ function loadBreedPage() {
     return;
   }
 
-  let breed;
+  // Normalise the query string for comparison
+  const normalisedQuery = breedName.toLowerCase().replace(/[^a-z0-9]/g, "");
 
-  // Handle both array and object structures
-  if (Array.isArray(dogBreeds)) {
-    breed = dogBreeds.find(
-      b => b.name.toLowerCase().replace(/\s+/g, "") === breedName.toLowerCase()
-    );
-  } else {
-    breed = dogBreeds[breedName.toLowerCase()];
-  }
+  // Find the breed in the array
+  const breed = Array.isArray(dogBreeds)
+    ? dogBreeds.find(
+        b =>
+          b.name
+            .toLowerCase()
+            .replace(/[^a-z0-9]/g, "") === normalisedQuery
+      )
+    : dogBreeds[normalisedQuery];
 
   console.log("Breed lookup:", breedName, breed); // Debug log
 
