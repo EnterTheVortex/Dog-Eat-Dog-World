@@ -1,70 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- Meta & SEO -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dog Eat Dog World | Home</title>
-  <meta name="description" content="Dog Eat Dog World is your one-stop guide to dog breeds, nutrition, and responsible ownership.">
+// ===============================
+// Breed Detail Page Loader
+// ===============================
+function loadBreedPage() {
+  const params = new URLSearchParams(window.location.search);
+  const breedName = params.get("name");
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <!-- Header & Navigation -->
-  <header>
-  <h1>Dog Eat Dog World</h1>
-  <nav>
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="breeds.html">Dog Breeds</a></li>
-      <li><a href="nutrition.html">Nutrition</a></li>
-      <li><a href="dosdonts.html">Dos & Don’ts</a></li>
-      <li><a href="cant-eat.html">What They Can’t Eat</a></li>
-    </ul>
-  </nav>
-</header>
+  if (breedName && typeof dogBreeds !== "undefined") {
+    // Find breed by matching name (case-insensitive, spaces removed)
+    const breed = dogBreeds.find(
+      b => b.name.toLowerCase().replace(/\s+/g, "") === breedName.toLowerCase()
+    );
 
-  <!-- Hero Section -->
-  <main>
-    <section class="hero fullpage">
-      <div class="hero-content">
-        <h2>Welcome to Dog Eat Dog World</h2>
-        <p>
-          Dogs are more than pets — they’re loyal companions, family members, and lifelong friends. 
-          At Dog Eat Dog World, we believe every breed has a story worth telling, and every owner deserves 
-          the knowledge to give their dog the happiest, healthiest life possible.
-        </p>
-        <p>
-          Whether you’re curious about the unique traits of different breeds, searching for the best 
-          nutrition advice, or learning the dos and don’ts of responsible ownership, this site is your 
-          trusted guide. We cover everything from playful Pomeranians to gentle giants like Great Danes, 
-          offering insights into their personalities, care needs, and histories.
-        </p>
-        <p>
-          Explore our comprehensive breed library, discover safe and healthy diets, and learn how to 
-          avoid common mistakes that can affect your dog’s wellbeing. With practical tips, expert-backed 
-          information, and easy-to-follow guides, Dog Eat Dog World is here to help you build a stronger 
-          bond with your furry friend.
-        </p>
-        <a href="breeds.html" class="btn hero-btn">🐾 Explore Breeds</a>
-      </div>
-    </section>
-  </main>
+    const container = document.getElementById("breed-info");
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Dog Eat Dog World | All Rights Reserved</p>
-  </footer>
+    if (breed && container) {
+      container.innerHTML = `
+        <h2>${breed.name}</h2>
+        ${breed.image ? `<img src="${breed.image}" alt="${breed.name}" class="breed-img">` : ""}
+        <p><strong>Origin:</strong> ${breed.origin}</p>
+        <p><strong>History:</strong> ${breed.history}</p>
+        <p><strong>Temperament:</strong> ${breed.temperament}</p>
+        <p><strong>Lifespan:</strong> ${breed.lifespan}</p>
+        <p><strong>Size:</strong> ${breed.size}</p>
+        <p><strong>Exercise Needs:</strong> ${breed.exercise}</p>
+        <p><strong>Grooming:</strong> ${breed.grooming}</p>
+        <p><strong>Health Issues:</strong> ${breed.health}</p>
+        <p><strong>Training:</strong> ${breed.training}</p>
+        <h3>Fun Facts:</h3>
+        <ul>
+          ${breed.funFacts.map(fact => `<li>${fact}</li>`).join("")}
+        </ul>
+        <a href="breeds.html" class="btn">Back to Breeds</a>
+      `;
+    } else if (container) {
+      container.innerHTML = `
+        <p>Breed information not found. Please return to the <a href="breeds.html">breeds list</a>.</p>
+      `;
+    }
+  }
+}
 
-  <!-- Scripts -->
-  <!-- Load breed data first, then main script -->
-  <script src="breeds-data.js"></script>
-  <script src="script.js"></script>
-</body>
-</html>
+// ===============================
+// Breed Search/Filter (on breeds.html)
+// ===============================
+function setupBreedSearch() {
+  const searchInput = document.getElementById("breed-search");
+  const breedList = document.querySelectorAll(".breed-list li");
+
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      const term = searchInput.value.toLowerCase();
+      breedList.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(term) ? "block" : "none";
+      });
+    });
+  }
+}
+
+// ===============================
+// Mobile Navigation Toggle
+// ===============================
+function setupHamburgerMenu() {
+  const hamburger = document.querySelector(".hamburger");
+  const navList = document.querySelector("nav ul");
+
+  if (hamburger && navList) {
+    hamburger.addEventListener("click", () => {
+      navList.classList.toggle("show");
+    });
+  }
+}
+
+// ===============================
+// Initialize Functions
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+  loadBreedPage();
+  setupBreedSearch();
+  setupHamburgerMenu();
+});
