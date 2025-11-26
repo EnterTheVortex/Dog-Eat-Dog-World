@@ -281,8 +281,8 @@ section p {
 }
 
 .breed-list li {
-  margin: 0.5rem 0;
-  display: block; /* ensure visible by default */
+  display: block !important;
+  color: #2c3e50 !important;
 }
 
 .breed-list a {
@@ -372,19 +372,3 @@ footer {
 
   .btn {
     padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  .btn::after {
-    display: none;
-  }
-
-  /* Optional: make breed list headings smaller on very small screens */
-  .breed-list h3 {
-    font-size: 1.2rem;
-  }
-
-  .breed-list a {
-    font-size: 0.95rem;
-  }
-}
