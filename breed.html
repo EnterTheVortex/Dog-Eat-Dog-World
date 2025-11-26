@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta & SEO -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dog Breed Details | Dog Eat Dog World</title>
+  <meta name="description" content="Detailed information on dog breeds including history, temperament, health, and care.">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <h1>Dog Eat Dog World</h1>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="breeds.html" class="active">Dog Breeds</a></li>
+        <li><a href="nutrition.html">Nutrition</a></li>
+        <li><a href="dosdonts.html">Dos & Don’ts</a></li>
+        <li><a href="cant-eat.html">What They Can’t Eat</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Breed Info Container -->
+  <main>
+    <section id="breed-info" class="breed-detail" aria-live="polite">
+      <!-- Breed details will be injected here by script.js -->
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Dog Eat Dog World | All Rights Reserved</p>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Load breed data first, then main script -->
+  <script src="breeds-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
