@@ -281,6 +281,7 @@ section p {
 
 .breed-list li {
   margin: 0.5rem 0;
+  display: block; /* ensure visible by default */
 }
 
 .breed-list a {
@@ -324,35 +325,22 @@ footer {
     align-items: center;
   }
 
-  /* Hamburger Menu Button */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 25px;
-  height: 20px;
-  cursor: pointer;
-}
-
-.hamburger span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background: #fff;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* Responsive Design Tweaks */
-@media (max-width: 768px) {
-  header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
   .hamburger {
     display: flex; /* show hamburger on mobile */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
   }
 
   nav ul {
