@@ -4,8 +4,8 @@
   <!-- Meta & SEO -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dog Breed Details | Dog Eat Dog World</title>
-  <meta name="description" content="Detailed information on dog breeds including history, temperament, health, and care.">
+  <title>Dog Breeds A–Z | Dog Eat Dog World</title>
+  <meta name="description" content="Explore our complete list of dog breeds from A to Z. Click a breed to learn more.">
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
@@ -31,10 +31,37 @@
     </nav>
   </header>
 
-  <!-- Breed Info Container -->
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2>Dog Breeds A–Z</h2>
+    <p>Explore our complete list of dog breeds. Click on a breed to learn more.</p>
+    <input type="text" id="breed-search" placeholder="Search breeds...">
+  </section>
+
+  <!-- Breed List -->
   <main>
-    <section id="breed-info" class="breed-detail" aria-live="polite">
-      <!-- Breed details will be injected here by script.js -->
+    <section class="breed-list">
+      <h3>A</h3>
+      <ul>
+        <li><a href="breed.html?name=alaskanmalamute">Alaskan Malamute</a></li>
+        <li><a href="breed.html?name=australianshepherd">Australian Shepherd</a></li>
+      </ul>
+
+      <h3>B</h3>
+      <ul>
+        <li><a href="breed.html?name=bernesemountaindog">Bernese Mountain Dog</a></li>
+        <li><a href="breed.html?name=bordercollie">Border Collie</a></li>
+        <li><a href="breed.html?name=bloodhound">Bloodhound</a></li>
+      </ul>
+
+      <h3>C</h3>
+      <ul>
+        <li><a href="breed.html?name=cockerspaniel">Cocker Spaniel</a></li>
+        <li><a href="breed.html?name=corgi">Corgi</a></li>
+        <li><a href="breed.html?name=chowchow">Chow Chow</a></li>
+      </ul>
+
+      <!-- Continue with other letters as needed -->
     </section>
   </main>
 
@@ -44,7 +71,6 @@
   </footer>
 
   <!-- Scripts -->
-  <!-- Load breed data first, then main script -->
   <script src="breeds-data.js"></script>
   <script src="script.js"></script>
 </body>
