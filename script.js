@@ -4,38 +4,49 @@
 function loadBreedPage() {
   const params = new URLSearchParams(window.location.search);
   const breedName = params.get("name");
-
   const container = document.getElementById("breed-info");
 
-  if (breedName && typeof dogBreeds !== "undefined") {
-    // Look up by key (case-insensitive)
-    const key = breedName.toLowerCase();
-    const breed = dogBreeds[key];
+  if (!container) return;
 
-    if (breed && container) {
-      container.innerHTML = `
-        <h2>${breed.name}</h2>
-        ${breed.image ? `<img src="${breed.image}" alt="${breed.name}" class="breed-img">` : ""}
-        <p><strong>Origin:</strong> ${breed.origin}</p>
-        <p><strong>History:</strong> ${breed.history}</p>
-        <p><strong>Temperament:</strong> ${breed.temperament}</p>
-        <p><strong>Lifespan:</strong> ${breed.lifespan}</p>
-        <p><strong>Size:</strong> ${breed.size}</p>
-        <p><strong>Exercise Needs:</strong> ${breed.exercise}</p>
-        <p><strong>Grooming:</strong> ${breed.grooming}</p>
-        <p><strong>Health Issues:</strong> ${breed.health}</p>
-        <p><strong>Training:</strong> ${breed.training}</p>
-        <h3>Fun Facts:</h3>
-        <ul>
-          ${breed.funFacts.map(fact => `<li>${fact}</li>`).join("")}
-        </ul>
-        <a href="breeds.html" class="btn">Back to Breeds</a>
-      `;
-    } else if (container) {
-      container.innerHTML = `
-        <p>Breed information not found. Please return to the <a href="breeds.html">breeds list</a>.</p>
-      `;
-    }
+  if (!breedName || typeof dogBreeds === "undefined") {
+    container.innerHTML = `<p>No breed selected. Go back to the <a href="breeds.html">A–Z list</a>.</p>`;
+    return;
+  }
+
+  let breed;
+
+  // Handle both array and object structures
+  if (Array.isArray(dogBreeds)) {
+    breed = dogBreeds.find(
+      b => b.name.toLowerCase().replace(/\s+/g, "") === breedName.toLowerCase()
+    );
+  } else {
+    breed = dogBreeds[breedName.toLowerCase()];
+  }
+
+  console.log("Breed lookup:", breedName, breed); // Debug log
+
+  if (breed) {
+    container.innerHTML = `
+      <h2>${breed.name}</h2>
+      ${breed.image ? `<img src="${breed.image}" alt="${breed.name}" class="breed-img">` : ""}
+      <p><strong>Origin:</strong> ${breed.origin}</p>
+      <p><strong>History:</strong> ${breed.history}</p>
+      <p><strong>Temperament:</strong> ${breed.temperament}</p>
+      <p><strong>Lifespan:</strong> ${breed.lifespan}</p>
+      <p><strong>Size:</strong> ${breed.size}</p>
+      <p><strong>Exercise Needs:</strong> ${breed.exercise}</p>
+      <p><strong>Grooming:</strong> ${breed.grooming}</p>
+      <p><strong>Health Issues:</strong> ${breed.health}</p>
+      <p><strong>Training:</strong> ${breed.training}</p>
+      <h3>Fun Facts:</h3>
+      <ul>${breed.funFacts.map(fact => `<li>${fact}</li>`).join("")}</ul>
+      <a href="breeds.html" class="btn">Back to Breeds</a>
+    `;
+  } else {
+    container.innerHTML = `
+      <p>Breed information not found. Please return to the <a href="breeds.html">breeds list</a>.</p>
+    `;
   }
 }
 
