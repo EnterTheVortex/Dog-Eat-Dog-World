@@ -5,13 +5,12 @@ function loadBreedPage() {
   const params = new URLSearchParams(window.location.search);
   const breedName = params.get("name");
 
-  if (breedName && typeof dogBreeds !== "undefined") {
-    // Find breed by matching name (case-insensitive, spaces removed)
-    const breed = dogBreeds.find(
-      b => b.name.toLowerCase().replace(/\s+/g, "") === breedName.toLowerCase()
-    );
+  const container = document.getElementById("breed-info");
 
-    const container = document.getElementById("breed-info");
+  if (breedName && typeof dogBreeds !== "undefined") {
+    // Look up by key (case-insensitive)
+    const key = breedName.toLowerCase();
+    const breed = dogBreeds[key];
 
     if (breed && container) {
       container.innerHTML = `
