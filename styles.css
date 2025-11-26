@@ -38,7 +38,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 header h1 {
@@ -48,12 +47,12 @@ header h1 {
 /* Navigation */
 nav {
   position: relative;
+  z-index: 1000; /* ensure nav sits above content */
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
   gap: 1.5rem;
 }
 
@@ -151,6 +150,8 @@ nav a.active {
 /* Main Sections */
 main {
   padding: 2rem;
+  position: relative;
+  z-index: 1; /* ensure content sits above nav background */
 }
 
 main section ul {
@@ -376,5 +377,14 @@ footer {
 
   .btn::after {
     display: none;
+  }
+
+  /* Optional: make breed list headings smaller on very small screens */
+  .breed-list h3 {
+    font-size: 1.2rem;
+  }
+
+  .breed-list a {
+    font-size: 0.95rem;
   }
 }
