@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Meta & SEO -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dog Breeds A–Z | Dog Eat Dog World</title>
+  <title>Dog Breed Details | Dog Eat Dog World</title>
+  <meta name="description" content="Detailed information on dog breeds including history, temperament, health, and care.">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- Header & Navigation -->
   <header>
     <h1>Dog Eat Dog World</h1>
-    <nav>
+    <nav aria-label="Main navigation">
+      <!-- Hamburger button -->
+      <button class="hamburger" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="breeds.html" class="active">Dog Breeds</a></li>
@@ -21,93 +31,10 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h2>Dog Breeds A–Z</h2>
-    <p>Explore our complete list of dog breeds. Click on a breed to learn more.</p>
-    <input type="text" id="breed-search" placeholder="Search breeds...">
-  </section>
-
-  <!-- Breed List -->
+  <!-- Breed Info Container -->
   <main>
-    <section class="breed-list">
-      <h3>A</h3>
-      <ul>
-        <li><a href="breed.html?name=alaskanmalamute">Alaskan Malamute</a></li>
-        <li><a href="breed.html?name=australianshepherd">Australian Shepherd</a></li>
-      </ul>
-
-      <h3>B</h3>
-      <ul>
-        <li><a href="breed.html?name=bernesemountaindog">Bernese Mountain Dog</a></li>
-        <li><a href="breed.html?name=bluemerlecollie">Blue Merle Collie</a></li>
-        <li><a href="breed.html?name=bordercollie">Border Collie</a></li>
-        <li><a href="breed.html?name=bloodhound">Bloodhound</a></li>
-      </ul>
-
-      <h3>C</h3>
-      <ul>
-        <li><a href="breed.html?name=kingcharlescavalier">King Charles Cavalier</a></li>
-        <li><a href="breed.html?name=chowchow">Chow Chow</a></li>
-        <li><a href="breed.html?name=corgi">Corgi</a></li>
-        <li><a href="breed.html?name=cockerspaniel">Cocker Spaniel</a></li>
-      </ul>
-
-      <h3>D</h3>
-      <ul>
-        <li><a href="breed.html?name=dalmatian">Dalmatian</a></li>
-        <li><a href="breed.html?name=dachshund">Dachshund</a></li>
-      </ul>
-
-      <h3>G</h3>
-      <ul>
-        <li><a href="breed.html?name=germanshepherd">German Shepherd</a></li>
-        <li><a href="breed.html?name=greatdane">Great Dane</a></li>
-        <li><a href="breed.html?name=goldendoodle">Goldendoodle</a></li>
-        <li><a href="breed.html?name=goldenretriever">Golden Retriever</a></li>
-        <li><a href="breed.html?name=greaterswissmountaindog">Greater Swiss Mountain Dog</a></li>
-      </ul>
-
-      <h3>H</h3>
-      <ul>
-        <li><a href="breed.html?name=siberianhusky">Siberian Husky</a></li>
-      </ul>
-
-      <h3>L</h3>
-      <ul>
-        <li><a href="breed.html?name=leonberger">Leonberger</a></li>
-      </ul>
-
-      <h3>N</h3>
-      <ul>
-        <li><a href="breed.html?name=newfoundland">Newfoundland</a></li>
-      </ul>
-
-      <h3>P</h3>
-      <ul>
-        <li><a href="breed.html?name=pomeranian">Pomeranian</a></li>
-      </ul>
-
-      <h3>R</h3>
-      <ul>
-        <li><a href="breed.html?name=rottweiler">Rottweiler</a></li>
-      </ul>
-
-      <h3>S</h3>
-      <ul>
-        <li><a href="breed.html?name=schnauzer">Schnauzer</a></li>
-        <li><a href="breed.html?name=shetlandsheepdog">Shetland Sheepdog (Sheltie)</a></li>
-        <li><a href="breed.html?name=shihtzu">Shih Tzu</a></li>
-        <li><a href="breed.html?name=skyeterrier">Skye Terrier</a></li>
-        <li><a href="breed.html?name=scottishterrier">Scottish Terrier</a></li>
-        <li><a href="breed.html?name=springerspaniel">Springer Spaniel</a></li>
-        <li><a href="breed.html?name=stbernard">St Bernard</a></li>
-      </ul>
-
-      <h3>T</h3>
-      <ul>
-        <li><a href="breed.html?name=tibetanmastiff">Tibetan Mastiff</a></li>
-      </ul>
+    <section id="breed-info" class="breed-detail" aria-live="polite">
+      <!-- Breed details will be injected here by script.js -->
     </section>
   </main>
 
@@ -116,7 +43,9 @@
     <p>&copy; 2025 Dog Eat Dog World | All Rights Reserved</p>
   </footer>
 
-  <!-- Script -->
+  <!-- Scripts -->
+  <!-- Load breed data first, then main script -->
+  <script src="breeds-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
